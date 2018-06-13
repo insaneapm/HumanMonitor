@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js"></script>
+<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <style>
+        .shadow {
+            box-shadow: 0px 0px 20px 0px rgb(128, 128, 128);
+        }
+        * {
+            box-sizing: border-box; 
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the side navigation */
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(165, 165, 165);
+            overflow-x: hidden;
+        }
+
+
+            /* Side navigation links */
+            .sidenav a {
+                color: white;
+                padding: 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color on hover */
+                .sidenav a:hover {
+                    box-shadow: -5px 5px 13px 5px rgb(128, 128, 128);
+                    text-shadow: 0px 0px 10px rgb(165, 165, 165);
+                    background-color: white;
+                    color: black;
+                }
+
+        /* Style the content */
+        .content {
+            margin-left: 220px;
+            padding-left: 20px;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <title>Interface Web</title>
+</head>
+
+<body>
+
+    <div class="sidenav shadow" id="navbar">
+        <a id="nav1" class="unselectable" onclick="navigation(1);">Infos</a>
+        <a id="nav2" class="unselectable" onclick="navigation(2);">Control Center</a>
+        <a id="nav3" class="unselectable" onclick="navigation(3);">Statistics</a>
+    </div>
+
+    <div id="1" class="content">
+        <h1>Infos</h1>
+        <p>infos ici trop lourd</p>
+    </div>
+
+    <div id="2" class="content">
+        <h1>Control Center</h1>
+        <p>
+            <span id="cpu"></span> %
+            <button id="id_boutonStartStopLogs" onclick="logsGoChange()"> Start Logs </button>
+            <button id="id_boutonSauvegarder" onclick="logsSauvegarder()"> Save as .txt </button>
+        </p>
+    </div>
+
+    <div id="3" class="content">
+        <h1>Statistics</h1>
+        <p>
+            oui salut
+        </p>
+        <div style="width:75%;">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    //FileSaver.js
+    var saveAs = saveAs || function (c) { "use strict"; if (!(void 0 === c || "undefined" != typeof navigator && /MSIE [1-9]\./.test(navigator.userAgent))) { var t = c.document, f = function () { return c.URL || c.webkitURL || c }, s = t.createElementNS("http://www.w3.org/1999/xhtml", "a"), d = "download" in s, u = /constructor/i.test(c.HTMLElement) || c.safari, l = /CriOS\/[\d]+/.test(navigator.userAgent), p = c.setImmediate || c.setTimeout, v = function (t) { p(function () { throw t }, 0) }, w = function (t) { setTimeout(function () { "string" == typeof t ? f().revokeObjectURL(t) : t.remove() }, 4e4) }, m = function (t) { return /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(t.type) ? new Blob([String.fromCharCode(65279), t], { type: t.type }) : t }, r = function (t, n, e) { e || (t = m(t)); var r, o = this, a = "application/octet-stream" === t.type, i = function () { !function (t, e, n) { for (var r = (e = [].concat(e)).length; r--;) { var o = t["on" + e[r]]; if ("function" == typeof o) try { o.call(t, n || t) } catch (t) { v(t) } } }(o, "writestart progress write writeend".split(" ")) }; if (o.readyState = o.INIT, d) return r = f().createObjectURL(t), void p(function () { var t, e; s.href = r, s.download = n, t = s, e = new MouseEvent("click"), t.dispatchEvent(e), i(), w(r), o.readyState = o.DONE }, 0); !function () { if ((l || a && u) && c.FileReader) { var e = new FileReader; return e.onloadend = function () { var t = l ? e.result : e.result.replace(/^data:[^;]*;/, "data:attachment/file;"); c.open(t, "_blank") || (c.location.href = t), t = void 0, o.readyState = o.DONE, i() }, e.readAsDataURL(t), o.readyState = o.INIT } r || (r = f().createObjectURL(t)), a ? c.location.href = r : c.open(r, "_blank") || (c.location.href = r); o.readyState = o.DONE, i(), w(r) }() }, e = r.prototype; return "undefined" != typeof navigator && navigator.msSaveOrOpenBlob ? function (t, e, n) { return e = e || t.name || "download", n || (t = m(t)), navigator.msSaveOrOpenBlob(t, e) } : (e.abort = function () { }, e.readyState = e.INIT = 0, e.WRITING = 1, e.DONE = 2, e.error = e.onwritestart = e.onprogress = e.onwrite = e.onabort = e.onerror = e.onwriteend = null, function (t, e, n) { return new r(t, e || t.name || "download", n) }) } }("undefined" != typeof self && self || "undefined" != typeof window && window || this);
+
+    var Logs = [];
+    Logs.Go = false;
+    Logs.n = 0;
+    Logs.Data = [];
+    Logs.Data.Valeur = [];
+    Logs.Data.Heure = [];
+
+    function logsGoChange() {
+        /* inverse la valeur de Logs.Go et change le nom du bouton correspondant */
+        if (Logs.Go === true) { Logs.Go = false; document.getElementById("id_boutonStartStopLogs").innerHTML = "Start Logs"; }
+        else { Logs.Go = true; document.getElementById("id_boutonStartStopLogs").innerHTML = "Stop Logs" }
+    }
+
+    function logsSauvegarder() {
+        var TextFileContent = "";
+        for (var i = 0; i < Logs.n; i++) {
+            TextFileContent = TextFileContent.concat(String(Logs.Data[i][0])).concat(';').concat(String(Logs.Data[i][1])).concat(';\r\n');
+        }
+        var TextFileName = "LOGS_".concat(new Date()).toUpperCase();
+        TextFileName = TextFileName.slice(0, TextFileName.length - 12);
+        saveAs(new File([TextFileContent], TextFileName.concat(".txt"), { type: "text/plain;charset=utf-8" }));
+    }
+
+    function navigation(id) {
+        var elementsNavbar = document.getElementById('navbar').childElementCount;
+        for (var i = 1; i <= elementsNavbar; i++) {
+            if (i != id) {
+                document.getElementById(String(i)).style.display = 'none';
+            }
+            else {
+                document.getElementById(String(id)).style.display = 'block';
+            }
+        }
+
+    }
+
+    var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "ed758fa6751b0efbdaeca51f346fd521c7672eda", "TestWeb");
+
+    constellation.connection.stateChanged(function (change) {
+        if (change.newState === $.signalR.connectionState.connected) {
+            console.log("Je suis connecté");
+            constellation.client.registerStateObjectLink("LAPTOP-1R5A4JK5_UI", "HWMonitor", "/intelcpu/0/load/0", "*", function (so) {
+                $("#cpu").text(so.Value.Value);
+                if (Logs.Go) {
+                    console.log("logging..")
+                    Logs.Data.Valeur[Logs.n] = so.Value.Value;
+                    Logs.Data.Heure[Logs.n] = new Date();
+                    Logs.n = Logs.n + 1;
+                    myChart.update();
+                }
+            });
+        }
+    });
+
+    navigation(0);
+
+    console.log(Logs.Data);
+    var ctx = document.getElementById("canvas");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Logs.Data.Heure,
+            datasets: [{
+                label: 'Label a changer',
+                data: Logs.Data.Valeur,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    constellation.connection.start();
+    
+
+
+</script>
