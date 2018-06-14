@@ -1,0 +1,14 @@
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\PackageInfo.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\MyBrain.exe.config
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\MyBrain.XML
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\MyBrain.exe
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\MyBrain.pdb
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\Constellation.Common.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\Constellation.Common.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\obj\Debug\MyBrain.csproj.CoreCompileInputs.cache
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\obj\Debug\MyBrain.exe
+C:\Users\ISEN\source\repos\MyfirstPackage\MyBrain\obj\Debug\MyBrain.pdb

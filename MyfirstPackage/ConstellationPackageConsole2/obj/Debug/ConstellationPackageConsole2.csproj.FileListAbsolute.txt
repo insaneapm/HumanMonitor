@@ -1,0 +1,15 @@
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\PackageInfo.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\ConstellationPackageConsole2.exe.config
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\ConstellationPackageConsole2.XML
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\ConstellationPackageConsole2.exe
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\ConstellationPackageConsole2.pdb
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\Constellation.Common.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\Constellation.Common.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\obj\Debug\ConstellationPackageConsole2.csprojResolveAssemblyReference.cache
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\obj\Debug\ConstellationPackageConsole2.csproj.CoreCompileInputs.cache
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\obj\Debug\ConstellationPackageConsole2.exe
+C:\Users\ISEN\source\repos\MyfirstPackage\ConstellationPackageConsole2\obj\Debug\ConstellationPackageConsole2.pdb

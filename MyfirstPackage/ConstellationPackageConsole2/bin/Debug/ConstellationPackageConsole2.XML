@@ -1,0 +1,891 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ConstellationPackageConsole2</name>
+    </assembly>
+    <members>
+        <member name="T:ConstellationPackageConsole2.MyConstellation">
+            <summary>
+            Represents your Constellation
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyConstellation.Sentinels">
+            <summary>
+            Specifies the sentinels in your Constellation
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyConstellation.Sentinels.BATZOO">
+            <summary>
+            Sentinel 'BATZOO'
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyConstellation.PackageInstances">
+            <summary>
+            Specifies the package's instances in your Constellation
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyConstellation.PackageInstances.BATZOO_BatteryChecker">
+            <summary>
+            Package 'BatteryChecker' on 'BATZOO'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyConstellation.PackageInstances.BATZOO_HWMonitor">
+            <summary>
+            Package 'HWMonitor' on 'BATZOO'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyConstellation.PackageInstances.BATZOO_MyfirstPackage">
+            <summary>
+            Package 'MyfirstPackage' on 'BATZOO'
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyConstellation.Packages">
+            <summary>
+            Specifies the packages in your Constellation
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyConstellation.Packages.BatteryChecker">
+            <summary>
+            Package 'BatteryChecker'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyConstellation.Packages.HWMonitor">
+            <summary>
+            Package 'HWMonitor'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyConstellation.Packages.MyfirstPackage">
+            <summary>
+            Package 'MyfirstPackage'
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyConstellation.CreateScope(ConstellationPackageConsole2.MyConstellation.Sentinels)">
+            <summary>
+            Creates the message scope to the specified sentinel.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <returns>MessageScope</returns>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyConstellation.CreateScope(ConstellationPackageConsole2.MyConstellation.PackageInstances)">
+            <summary>
+            Creates the message scope to the specified package's instance.
+            </summary>
+            <param name="package">The package's instance.</param>
+            <returns>MessageScope</returns>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyConstellation.CreateScope(ConstellationPackageConsole2.MyConstellation.Packages)">
+            <summary>
+            Creates the message scope to the specified package.
+            </summary>
+            <param name="package">The package.</param>
+            <returns>MessageScope</returns>
+        </member>
+        <member name="T:ConstellationPackageConsole2.RealNameAttribute">
+            <summary>
+            Specifies the real name of an enum value.
+            </summary>
+            <seealso cref="T:System.Attribute" />
+        </member>
+        <member name="P:ConstellationPackageConsole2.RealNameAttribute.RealName">
+            <summary>
+            Gets or sets the real name.
+            </summary>
+            <value>
+            The real name.
+            </value>
+        </member>
+        <member name="M:ConstellationPackageConsole2.RealNameAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.RealNameAttribute"/> class.
+            </summary>
+            <param name="realname">The real name.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.RealNameAttribute.GetRealName``1(``0)">
+            <summary>
+            Gets the real name of an enum value.
+            </summary>
+            <typeparam name="TEnum">The type of the enum.</typeparam>
+            <param name="value">The enum value.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="T:ConstellationPackageConsole2.RealNameExtension">
+            <summary>
+            Provides extension methods to get the real name of a Sentinel, Package or PackageInstance.
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.RealNameExtension.GetRealName(ConstellationPackageConsole2.MyConstellation.Sentinels)">
+            <summary>
+            Gets the real name of a Sentinel.
+            </summary>
+            <param name="sentinel">The Sentinel.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="M:ConstellationPackageConsole2.RealNameExtension.GetRealName(ConstellationPackageConsole2.MyConstellation.Packages)">
+            <summary>
+            Gets the real name of a Package.
+            </summary>
+            <param name="package">The Package.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="M:ConstellationPackageConsole2.RealNameExtension.GetRealName(ConstellationPackageConsole2.MyConstellation.PackageInstances)">
+            <summary>
+            Gets the real name of a Package's instance.
+            </summary>
+            <param name="package">The Package's instance.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNames">
+            <summary>
+            Specifies the know StateObjects for the package BatteryChecker
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNames._072FC7273F933271B97783B73ED696A39A17F4DD">
+            <summary>
+            StateObject '072FC7273F933271B97783B73ED696A39A17F4DD'
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNamesExtension">
+            <summary>
+            Provides extension methods to get the real name of a BatteryCheckerStateObjectNames.
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNamesExtension.GetRealName(ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNames)">
+            <summary>
+            Gets the real name of a BatteryChecker's StateObject.
+            </summary>
+            <param name="stateObjectName">The BatteryChecker 's StateObject.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute">
+            <summary>
+             Specifies that the property is attach to BatteryChecker's StateObject.
+            </summary>
+            <seealso cref="T:Constellation.Package.StateObjectLinkAttribute" />
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="name">The StateObject name.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels,ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <param name="name">The StateObject name.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels,ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectNames,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <param name="name">The StateObject name.</param>
+            <param name="type">The StateObject type.</param>
+        </member>
+        <member name="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState">
+            <summary>
+            Represent the BatteryState 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState.DeviceID">
+            <summary>
+            Gets the battery device identifier. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState.Name">
+            <summary>
+            Gets the battery name. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState.State">
+            <summary>
+            Gets the battery state. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState.EstimatedChargeRemaining">
+            <summary>
+            Gets the estimated charge remaining. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState.EstimatedRunTime">
+            <summary>
+            Gets the estimated run time. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState.StatusCode">
+            <summary>
+            Gets the battery status code. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryState.StatusLabel">
+            <summary>
+            Gets the battery status label. 
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerExtensions">
+            <summary>
+            Provides extension methods for BatteryChecker's StateObjects
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerExtensions.AsBatteryCheckerBatteryState(Constellation.StateObject)">
+            <summary>
+            Get StateObject value as BatteryState
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.BatteryChecker.StateObjects.BatteryCheckerExtensions.AsBatteryCheckerBatteryState(Constellation.Package.StateObjectNotifier)">
+            <summary>
+            Get StateObject value as BatteryState
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames">
+            <summary>
+            Specifies the know StateObjects for the package HWMonitor
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._hdd_0">
+            <summary>
+            StateObject '/hdd/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._hdd_0_data_1">
+            <summary>
+            StateObject '/hdd/0/data/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._hdd_0_data_2">
+            <summary>
+            StateObject '/hdd/0/data/2'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._hdd_0_level_0">
+            <summary>
+            StateObject '/hdd/0/level/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._hdd_0_load_0">
+            <summary>
+            StateObject '/hdd/0/load/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._hdd_0_temperature_0">
+            <summary>
+            StateObject '/hdd/0/temperature/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_clock_0">
+            <summary>
+            StateObject '/intelcpu/0/clock/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_clock_1">
+            <summary>
+            StateObject '/intelcpu/0/clock/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_clock_2">
+            <summary>
+            StateObject '/intelcpu/0/clock/2'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_load_0">
+            <summary>
+            StateObject '/intelcpu/0/load/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_load_1">
+            <summary>
+            StateObject '/intelcpu/0/load/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_load_2">
+            <summary>
+            StateObject '/intelcpu/0/load/2'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_power_0">
+            <summary>
+            StateObject '/intelcpu/0/power/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_power_1">
+            <summary>
+            StateObject '/intelcpu/0/power/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_power_2">
+            <summary>
+            StateObject '/intelcpu/0/power/2'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_power_3">
+            <summary>
+            StateObject '/intelcpu/0/power/3'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_temperature_0">
+            <summary>
+            StateObject '/intelcpu/0/temperature/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_temperature_1">
+            <summary>
+            StateObject '/intelcpu/0/temperature/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._intelcpu_0_temperature_2">
+            <summary>
+            StateObject '/intelcpu/0/temperature/2'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._nvidiagpu_0_clock_0">
+            <summary>
+            StateObject '/nvidiagpu/0/clock/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._nvidiagpu_0_clock_1">
+            <summary>
+            StateObject '/nvidiagpu/0/clock/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._nvidiagpu_0_clock_2">
+            <summary>
+            StateObject '/nvidiagpu/0/clock/2'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._nvidiagpu_0_load_3">
+            <summary>
+            StateObject '/nvidiagpu/0/load/3'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._nvidiagpu_0_smalldata_1">
+            <summary>
+            StateObject '/nvidiagpu/0/smalldata/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._nvidiagpu_0_smalldata_2">
+            <summary>
+            StateObject '/nvidiagpu/0/smalldata/2'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._nvidiagpu_0_smalldata_3">
+            <summary>
+            StateObject '/nvidiagpu/0/smalldata/3'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._ram_data_0">
+            <summary>
+            StateObject '/ram/data/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._ram_data_1">
+            <summary>
+            StateObject '/ram/data/1'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames._ram_load_0">
+            <summary>
+            StateObject '/ram/load/0'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames.Hardware">
+            <summary>
+            StateObject 'Hardware'
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNamesExtension">
+            <summary>
+            Provides extension methods to get the real name of a HWMonitorStateObjectNames.
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNamesExtension.GetRealName(ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames)">
+            <summary>
+            Gets the real name of a HWMonitor's StateObject.
+            </summary>
+            <param name="stateObjectName">The HWMonitor 's StateObject.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute">
+            <summary>
+             Specifies that the property is attach to HWMonitor's StateObject.
+            </summary>
+            <seealso cref="T:Constellation.Package.StateObjectLinkAttribute" />
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="name">The StateObject name.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels,ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <param name="name">The StateObject name.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels,ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectNames,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <param name="name">The StateObject name.</param>
+            <param name="type">The StateObject type.</param>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareDevice">
+            <summary>
+            Represent a Hardware device 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareDevice.Name">
+            <summary>
+            Gets or sets the name. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareDevice.Identifier">
+            <summary>
+            Gets or sets the identifier. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareDevice.Type">
+            <summary>
+            Gets or sets the hardware type. 
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive">
+            <summary>
+            Represent a HDD 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.Name">
+            <summary>
+            Gets or sets the name. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.Hardware">
+            <summary>
+            Gets or sets the hardware. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.SerialNumber">
+            <summary>
+            Gets or sets the serial number. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.Model">
+            <summary>
+            Gets or sets the model. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.Status">
+            <summary>
+            Gets or sets the status. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.MediaType">
+            <summary>
+            Gets or sets the type of the media. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.Manufacturer">
+            <summary>
+            Gets or sets the manufacturer. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.DiskDrive.Caption">
+            <summary>
+            Gets or sets the caption. 
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorValue">
+            <summary>
+            Represent a Hardware sensor value 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorValue.Name">
+            <summary>
+            Gets or sets the sensor name. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorValue.Value">
+            <summary>
+            Gets or sets the value. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorValue.Type">
+            <summary>
+            Gets or sets the sensor type. 
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorValue.Unit">
+            <summary>
+            Gets the unit of the value. 
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType">
+            <summary>
+            Enum 'HardwareType'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.Mainboard">
+            <summary>
+            Mainboard.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.SuperIO">
+            <summary>
+            SuperIO.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.CPU">
+            <summary>
+            CPU.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.RAM">
+            <summary>
+            RAM.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.GpuNvidia">
+            <summary>
+            GpuNvidia.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.GpuAti">
+            <summary>
+            GpuAti.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.TBalancer">
+            <summary>
+            TBalancer.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.Heatmaster">
+            <summary>
+            Heatmaster.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.HardwareType.HDD">
+            <summary>
+            HDD.
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType">
+            <summary>
+            Enum 'SensorType'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Voltage">
+            <summary>
+            Voltage.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Clock">
+            <summary>
+            Clock.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Temperature">
+            <summary>
+            Temperature.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Load">
+            <summary>
+            Load.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Fan">
+            <summary>
+            Fan.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Flow">
+            <summary>
+            Flow.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Control">
+            <summary>
+            Control.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Level">
+            <summary>
+            Level.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Factor">
+            <summary>
+            Factor.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Power">
+            <summary>
+            Power.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.Data">
+            <summary>
+            Data.
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.HWMonitor.StateObjects.SensorType.SmallData">
+            <summary>
+            SmallData.
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions">
+            <summary>
+            Provides extension methods for HWMonitor's StateObjects
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions.AsHWMonitorHardwareDevice(Constellation.StateObject)">
+            <summary>
+            Get StateObject value as HardwareDevice
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions.AsHWMonitorHardwareDevice(Constellation.Package.StateObjectNotifier)">
+            <summary>
+            Get StateObject value as HardwareDevice
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions.AsHWMonitorDiskDrive(Constellation.StateObject)">
+            <summary>
+            Get StateObject value as DiskDrive
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions.AsHWMonitorDiskDrive(Constellation.Package.StateObjectNotifier)">
+            <summary>
+            Get StateObject value as DiskDrive
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions.AsHWMonitorSensorValue(Constellation.StateObject)">
+            <summary>
+            Get StateObject value as SensorValue
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions.AsHWMonitorSensorValue(Constellation.Package.StateObjectNotifier)">
+            <summary>
+            Get StateObject value as SensorValue
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.HWMonitor.StateObjects.HWMonitorExtensions.AsHWMonitorListOfHardwareDevice(Constellation.StateObject)">
+            <summary>
+            Get StateObject value as System.Collections.Generic.List Of HardwareDevice
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames">
+            <summary>
+            Specifies the know StateObjects for the package MyfirstPackage
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames.Connecté_">
+            <summary>
+            StateObject 'Connecté '
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames.ShortLife">
+            <summary>
+            StateObject 'ShortLife'
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames.Température">
+            <summary>
+            StateObject 'Température'
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNamesExtension">
+            <summary>
+            Provides extension methods to get the real name of a MyfirstPackageStateObjectNames.
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNamesExtension.GetRealName(ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames)">
+            <summary>
+            Gets the real name of a MyfirstPackage's StateObject.
+            </summary>
+            <param name="stateObjectName">The MyfirstPackage 's StateObject.</param>
+            <returns>The real name.</returns>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute">
+            <summary>
+             Specifies that the property is attach to MyfirstPackage's StateObject.
+            </summary>
+            <seealso cref="T:Constellation.Package.StateObjectLinkAttribute" />
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="name">The StateObject name.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels,ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <param name="name">The StateObject name.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute.#ctor(ConstellationPackageConsole2.MyConstellation.Sentinels,ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectNames,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageStateObjectLinkAttribute"/> class.
+            </summary>
+            <param name="sentinel">The sentinel.</param>
+            <param name="name">The StateObject name.</param>
+            <param name="type">The StateObject type.</param>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.TemperatureHumidity">
+            <summary>
+            Type 'TemperatureHumidity'
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.MyfirstPackage.StateObjects.TemperatureHumidity.Temperature">
+            <summary>
+            The Temperature.
+            </summary>
+        </member>
+        <member name="P:ConstellationPackageConsole2.MyfirstPackage.StateObjects.TemperatureHumidity.Humidity">
+            <summary>
+            The Humidity.
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageExtensions">
+            <summary>
+            Provides extension methods for MyfirstPackage's StateObjects
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageExtensions.AsMyfirstPackageTemperatureHumidity(Constellation.StateObject)">
+            <summary>
+            Get StateObject value as TemperatureHumidity
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.StateObjects.MyfirstPackageExtensions.AsMyfirstPackageTemperatureHumidity(Constellation.Package.StateObjectNotifier)">
+            <summary>
+            Get StateObject value as TemperatureHumidity
+            </summary>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageExtensions">
+            <summary>
+            Provides extension methods for the MessageScope to MyfirstPackage
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageExtensions.ToMyfirstPackageScope(Constellation.MessageScope)">
+            <summary>
+            Create a MyfirstPackageScope
+            </summary>
+            <param name="scope">The Constellation MessageScope</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageExtensions.CreateMyfirstPackageScope(ConstellationPackageConsole2.MyConstellation.Sentinels)">
+            <summary>
+            Create a MyfirstPackageScope to all packages of the specified sentinel
+            </summary>
+            <param name="sentinel">The sentinel</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageExtensions.CreateMyfirstPackageScope(ConstellationPackageConsole2.MyConstellation.PackageInstances)">
+            <summary>
+            Create a MyfirstPackageScope to a specific package
+            </summary>
+            <param name="package">The package</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageExtensions.CreateMyfirstPackageScope(ConstellationPackageConsole2.MyConstellation.Packages)">
+            <summary>
+            Create a MyfirstPackageScope to a specific package
+            </summary>
+            <param name="package">The package</param>
+        </member>
+        <member name="T:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope">
+            <summary>
+            Represent a message scope to MyfirstPackage
+            </summary>
+        </member>
+        <member name="F:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope.currentScope">
+            <summary>
+            The current scope
+            </summary>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope.#ctor(Constellation.MessageScope)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope"/> class.
+            </summary>
+            <param name="scope">The scope.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope.BeepBeep(System.Int32,System.Int32)">
+            <summary>
+            Send message 'BeepBeep' to the current scope
+            </summary>
+            <param name="frequency">frequece en Hz</param>
+            <param name="duree">durée en ms</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope.Addition(System.Int32,System.Int32,System.Threading.CancellationToken,Constellation.Package.MessageContext@)">
+            <summary>
+            Send message 'Addition' to the current scope
+            </summary>
+            <param name="a">The 'a' parameter</param>
+            <param name="b">The 'b' parameter</param>
+            <returns>Task of System.Int32</returns>
+            <param name="cancellationToken">The CancellationToken that this task will observe.</param>		
+            <param name="context">The MessageContext of the received message.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope.Addition(System.Int32,System.Int32,Constellation.Package.MessageContext@)">
+            <summary>
+            Send message 'Addition' to the current scope
+            </summary>
+            <param name="a">The 'a' parameter</param>
+            <param name="b">The 'b' parameter</param>
+            <returns>Task of System.Int32</returns>
+            <param name="context">The MessageContext of the received message.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope.Addition(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Send message 'Addition' to the current scope
+            </summary>
+            <param name="a">The 'a' parameter</param>
+            <param name="b">The 'b' parameter</param>
+            <returns>Task of System.Int32</returns>
+            <param name="cancellationToken">The CancellationToken that this task will observe.</param>
+        </member>
+        <member name="M:ConstellationPackageConsole2.MyfirstPackage.MessageCallbacks.MyfirstPackageScope.Addition(System.Int32,System.Int32)">
+            <summary>
+            Send message 'Addition' to the current scope
+            </summary>
+            <param name="a">The 'a' parameter</param>
+            <param name="b">The 'b' parameter</param>
+            <returns>Task of System.Int32</returns>
+        </member>
+    </members>
+</doc>
