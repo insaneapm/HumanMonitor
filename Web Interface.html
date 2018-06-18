@@ -6,6 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script type="text/javascript" src="FileSaver.js"></script>
 <script type="text/javascript" src="Cookies.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -14,8 +15,9 @@
         .shadow {
             box-shadow: 0px 0px 20px 0px rgb(128, 128, 128);
         }
+
         * {
-            box-sizing: border-box; 
+            box-sizing: border-box;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
@@ -32,6 +34,7 @@
             -ms-user-select: text;
             user-select: text;
         }
+
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -87,10 +90,17 @@
     <div id="1" class="content">
         <h1>Settings</h1>
         <p>
-            Votre clé d'accès Constellation :
-            <input id="accessKey" type="text" class="selectable" size="41" />
-            <button id="setAccessKey" onclick="user.accessKey=document.getElementById('accessKey');">Set</button>
-            <button id="deleteAllCookies" onclick="deleteAllCookies();"> Delete Cookies</button>
+            Interface Name:
+            <input id="user1" type="text" class="selectable" size="41" />
+        </p><p>
+            Constellation URL:
+            <input id="user2" type="text" class="selectable" size="37" />
+        </p><p>
+            Acces Key:
+            <input id="user3" type="text" class="selectable" size="46" />
+        </p><p>
+            <button id="saveUser" onclick="userSave();">Save</button>
+            <button id="zerze" onclick="console.log(user);"> console.log(user)</button>
         </p>
     </div>
 
@@ -98,15 +108,14 @@
         <h1>Control Center</h1>
         <p>
             <span id="cpu"></span> %
-            <button id="id_boutonStartStopLogs" onclick="logsGoChange()"> Start Logs </button>
-            <button id="id_boutonSauvegarder" onclick="logsSauvegarder()"> Save as .txt </button>
+            <button id="id_boutonStartStopLogs" onclick="logsGoChange();"> Start Logs </button>
+            <button id="id_boutonSauvegarder" onclick="logsSauvegarder();"> Save as .txt </button>
         </p>
     </div>
 
     <div id="3" class="content">
         <h1>Statistics</h1>
         <p>
-            oui salut
         </p>
         <div style="width:75%;">
             <canvas id="canvas"></canvas>
@@ -117,12 +126,22 @@
 
 </html>
 
+
 <script>
-
     var user = [];
-    user.isFirstTime = getCookie("isFirstTime");
-    user.accessKey = getCookie("accessKey");
+    //tableau a remplir par nous pour savoir quelles variables on veut, et si elles sont modifiables dans le formulaire par l'utilisateur avec true/false
+    user._init = [['isFirstTime', false, null], ['constellationAccessKey', true, null], ['constellationUrl', true, null], ['constellationFriendlyName', true, null]];
+    console.log("La config user contient", user._init.length, "éléments.");
+    console.log("Config user:", user);
 
+    //je genere les variables depuis le tableau pour pouvoir les utiliser dans le code facilement
+    function userUpdate() {
+        console.log("Sauvegarde des paramètres :");
+        for (var i = 0; i < user._init.length; i++) {
+            console.log(user._init[i][0], "=", user._init[i][2]);
+            eval("user." + user._init[i][0] + '=user._init[i][2]');
+        }
+    }
 
     var Logs = [];
     Logs.Go = false;
@@ -136,7 +155,7 @@
         if (Logs.Go === true) { Logs.Go = false; document.getElementById("id_boutonStartStopLogs").innerHTML = "Start Logs"; }
         else { Logs.Go = true; document.getElementById("id_boutonStartStopLogs").innerHTML = "Stop Logs" }
     }
-
+    
     function logsSauvegarder() {
         var TextFileContent = "";
         for (var i = 0; i < Logs.n; i++) {
@@ -148,8 +167,7 @@
     }
 
     function navigation(id) {
-        console.log(id, user.isFirstTime);
-        if (user.isFirstTime === null) {
+        if (user[user.indexOf('isFirstTime')] === null) {
             id = 1;
         }
         var elementsNavbar = document.getElementById('navbar').childElementCount;
@@ -164,11 +182,18 @@
 
     }
 
+    function userSave() {
+        for (var i = 0; i < user._init.length; i++) {
+            if (user._init[i][1]===true) {
+                user._init[i][2] = document.getElementById("user".concat(String(i))).value;
+            }
+        }
+        userUpdate();
+    }
+    
     navigation(1);
 
-
-    var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "ed758fa6751b0efbdaeca51f346fd521c7672eda", "TestWeb");
-
+    var constellation = $.signalR.createConstellationConsumer(user.constellationUrl, 'ed758fa6751b0efbdaeca51f346fd521c7672eda', 'TestWeb');
     constellation.connection.stateChanged(function (change) {
         if (change.newState === $.signalR.connectionState.connected) {
             console.log("Je suis connecté");
@@ -181,10 +206,10 @@
                     Logs.n = Logs.n + 1;
                     myChart.update();
                 }
-            });
+            })
         }
     });
-    
+
     var ctx = document.getElementById("canvas");
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -224,7 +249,6 @@
     });
 
     constellation.connection.start();
-    
 
+</script>s
 
-</script>
