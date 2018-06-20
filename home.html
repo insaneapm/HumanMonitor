@@ -4,7 +4,9 @@
 <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js"></script>
 <script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-
+<script type="text/javascript" src="/js/FileSaver.js"></script>
+<script type="text/javascript" src="/js/Cookies.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -13,14 +15,24 @@
         .shadow {
             box-shadow: 0px 0px 20px 0px rgb(128, 128, 128);
         }
+
         * {
-            box-sizing: border-box; 
+            box-sizing: border-box;
             -webkit-touch-callout: none;
             -webkit-user-select: none;
             -khtml-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+        }
+
+        .selectable {
+            -webkit-touch-callout: inherit;
+            -webkit-user-select: text;
+            -khtml-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
         }
 
         body {
@@ -70,29 +82,44 @@
 <body>
 
     <div class="sidenav shadow" id="navbar">
-        <a id="nav1" class="unselectable" onclick="navigation(1);">Infos</a>
-        <a id="nav2" class="unselectable" onclick="navigation(2);">Control Center</a>
-        <a id="nav3" class="unselectable" onclick="navigation(3);">Statistics</a>
+        <a id="nav1" class="unselectable" onclick="navigation(1);">SETTINGS</a>
+        <a id="nav2" class="unselectable" onclick="navigation(2);">CONTROL CENTER</a>
+        <a id="nav3" class="unselectable" onclick="navigation(3);">STATISTICS</a>
     </div>
 
     <div id="1" class="content">
-        <h1>Infos</h1>
-        <p>infos ici trop lourd</p>
+        <h1>Settings</h1>
+        <div style="float:right;">0.1</div>
+        <p>
+            AccessKey:
+            <input id="user1" type="text" class="selectable" size="41" />
+        </p>
+        <p>
+            Constellation URL:
+            <input id="user2" type="text" class="selectable" size="37" />
+        </p>
+        <p>
+            Friendly Name:
+            <input id="user3" type="text" class="selectable" size="46" />
+        </p>
+        <p>
+            <button id="saveUser" onclick="userSaveForm(); userSaveCookies();">Save</button>
+            <button id="zerze" onclick="console.log(user);"> console.log(user)</button>
+        </p>
     </div>
 
     <div id="2" class="content">
         <h1>Control Center</h1>
         <p>
             <span id="cpu"></span> %
-            <button id="id_boutonStartStopLogs" onclick="logsGoChange()"> Start Logs </button>
-            <button id="id_boutonSauvegarder" onclick="logsSauvegarder()"> Save as .txt </button>
+            <button id="id_boutonStartStopLogs" onclick="logsGoChange();"> Start Logs </button>
+            <button id="id_boutonSauvegarder" onclick="logsSauvegarder();"> Save as .txt </button>
         </p>
     </div>
 
     <div id="3" class="content">
         <h1>Statistics</h1>
         <p>
-            oui salut
         </p>
         <div style="width:75%;">
             <canvas id="canvas"></canvas>
@@ -103,10 +130,36 @@
 
 </html>
 
-<script>
-    //FileSaver.js
-    var saveAs = saveAs || function (c) { "use strict"; if (!(void 0 === c || "undefined" != typeof navigator && /MSIE [1-9]\./.test(navigator.userAgent))) { var t = c.document, f = function () { return c.URL || c.webkitURL || c }, s = t.createElementNS("http://www.w3.org/1999/xhtml", "a"), d = "download" in s, u = /constructor/i.test(c.HTMLElement) || c.safari, l = /CriOS\/[\d]+/.test(navigator.userAgent), p = c.setImmediate || c.setTimeout, v = function (t) { p(function () { throw t }, 0) }, w = function (t) { setTimeout(function () { "string" == typeof t ? f().revokeObjectURL(t) : t.remove() }, 4e4) }, m = function (t) { return /^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(t.type) ? new Blob([String.fromCharCode(65279), t], { type: t.type }) : t }, r = function (t, n, e) { e || (t = m(t)); var r, o = this, a = "application/octet-stream" === t.type, i = function () { !function (t, e, n) { for (var r = (e = [].concat(e)).length; r--;) { var o = t["on" + e[r]]; if ("function" == typeof o) try { o.call(t, n || t) } catch (t) { v(t) } } }(o, "writestart progress write writeend".split(" ")) }; if (o.readyState = o.INIT, d) return r = f().createObjectURL(t), void p(function () { var t, e; s.href = r, s.download = n, t = s, e = new MouseEvent("click"), t.dispatchEvent(e), i(), w(r), o.readyState = o.DONE }, 0); !function () { if ((l || a && u) && c.FileReader) { var e = new FileReader; return e.onloadend = function () { var t = l ? e.result : e.result.replace(/^data:[^;]*;/, "data:attachment/file;"); c.open(t, "_blank") || (c.location.href = t), t = void 0, o.readyState = o.DONE, i() }, e.readAsDataURL(t), o.readyState = o.INIT } r || (r = f().createObjectURL(t)), a ? c.location.href = r : c.open(r, "_blank") || (c.location.href = r); o.readyState = o.DONE, i(), w(r) }() }, e = r.prototype; return "undefined" != typeof navigator && navigator.msSaveOrOpenBlob ? function (t, e, n) { return e = e || t.name || "download", n || (t = m(t)), navigator.msSaveOrOpenBlob(t, e) } : (e.abort = function () { }, e.readyState = e.INIT = 0, e.WRITING = 1, e.DONE = 2, e.error = e.onwritestart = e.onprogress = e.onwrite = e.onabort = e.onerror = e.onwriteend = null, function (t, e, n) { return new r(t, e || t.name || "download", n) }) } }("undefined" != typeof self && self || "undefined" != typeof window && window || this);
 
+<script>
+    var user = [];
+    //tableau a remplir par nous pour savoir quelles variables on veut, et si elles sont modifiables dans le formulaire par l'utilisateur avec true/false
+    user._init = [['isFirstTime', false, null], ['constellationAccessKey', true, null], ['constellationUrl', true, null], ['constellationFriendlyName', true, null]];
+    console.log("La config user contient", user._init.length, "éléments.");
+    console.log("Config user:", user);
+
+    //je genere les variables depuis le tableau pour pouvoir les utiliser dans le code facilement
+    function userUpdate() {
+        console.log("Sauvegarde des paramètres :");
+        for (var i = 0; i < user._init.length; i++) {
+            console.log(user._init[i][0], "=", user._init[i][2]);
+            eval("user." + user._init[i][0] + '=user._init[i][2]');
+        }
+    }
+
+    //on récupère les cookies
+    for (var i = 0; i < user._init.length; i++) {
+        user._init[i][2] = getCookie(user._init[i][0]);
+        userUpdate();
+    }
+
+    function userSaveCookies() {
+        for (var i = 0; i < user._init.length; i++) {
+            setCookie(user._init[i][0], user._init[i][2]);
+        }
+    }
+    
+    
     var Logs = [];
     Logs.Go = false;
     Logs.n = 0;
@@ -119,11 +172,11 @@
         if (Logs.Go === true) { Logs.Go = false; document.getElementById("id_boutonStartStopLogs").innerHTML = "Start Logs"; }
         else { Logs.Go = true; document.getElementById("id_boutonStartStopLogs").innerHTML = "Stop Logs" }
     }
-
+    
     function logsSauvegarder() {
         var TextFileContent = "";
         for (var i = 0; i < Logs.n; i++) {
-            TextFileContent = TextFileContent.concat(String(Logs.Data[i][0])).concat(';').concat(String(Logs.Data[i][1])).concat(';\r\n');
+            TextFileContent = TextFileContent.concat(String(Logs.Data.Valeur[i])).concat(';').concat(String(Logs.Data.Heure[i])).concat(';\r\n');
         }
         var TextFileName = "LOGS_".concat(new Date()).toUpperCase();
         TextFileName = TextFileName.slice(0, TextFileName.length - 12);
@@ -131,6 +184,9 @@
     }
 
     function navigation(id) {
+        if (user[user.indexOf('isFirstTime')] === null) {
+            id = 1;
+        }
         var elementsNavbar = document.getElementById('navbar').childElementCount;
         for (var i = 1; i <= elementsNavbar; i++) {
             if (i != id) {
@@ -143,8 +199,18 @@
 
     }
 
-    var constellation = $.signalR.createConstellationConsumer("http://localhost:8088", "ed758fa6751b0efbdaeca51f346fd521c7672eda", "TestWeb");
+    function userSaveForm() {
+        for (var i = 0; i < user._init.length; i++) {
+            if (user._init[i][1]===true) {
+                user._init[i][2] = document.getElementById("user".concat(String(i))).value;
+            }
+        }
+        userUpdate();
+    }
+    
+    navigation(1);
 
+    var constellation = $.signalR.createConstellationConsumer(user.constellationUrl, user.constellationAccessKey, 'TestWeb');
     constellation.connection.stateChanged(function (change) {
         if (change.newState === $.signalR.connectionState.connected) {
             console.log("Je suis connecté");
@@ -157,13 +223,10 @@
                     Logs.n = Logs.n + 1;
                     myChart.update();
                 }
-            });
+            })
         }
     });
 
-    navigation(0);
-
-    console.log(Logs.Data);
     var ctx = document.getElementById("canvas");
     var myChart = new Chart(ctx, {
         type: 'line',
@@ -203,7 +266,6 @@
     });
 
     constellation.connection.start();
-    
 
+</script>s
 
-</script>

@@ -1,0 +1,15 @@
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\PackageInfo.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\warningBattery.exe.config
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\warningBattery.XML
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\warningBattery.exe
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\warningBattery.pdb
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\Constellation.Common.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\Constellation.Common.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\obj\Debug\warningBattery.csproj.CoreCompileInputs.cache
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\obj\Debug\warningBattery.exe
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\obj\Debug\warningBattery.pdb
+C:\Users\ISEN\source\repos\MyfirstPackage\warningBattery\obj\Debug\warningBattery.csprojResolveAssemblyReference.cache
