@@ -92,13 +92,16 @@
         <p>
             Interface Name:
             <input id="user1" type="text" class="selectable" size="41" />
-        </p><p>
+        </p>
+        <p>
             Constellation URL:
             <input id="user2" type="text" class="selectable" size="37" />
-        </p><p>
+        </p>
+        <p>
             Acces Key:
             <input id="user3" type="text" class="selectable" size="46" />
-        </p><p>
+        </p>
+        <p>
             <button id="saveUser" onclick="userSave();">Save</button>
             <button id="zerze" onclick="console.log(user);"> console.log(user)</button>
         </p>
@@ -141,7 +144,8 @@
             console.log(user._init[i][0], "=", user._init[i][2]);
             eval("user." + user._init[i][0] + '=user._init[i][2]');
         }
-    }
+    }   
+
 
     var Logs = [];
     Logs.Go = false;
