@@ -1,3 +1,0 @@
-Ce qui doit être sauvegardé pour faire fonctionner l'interface web : 
-
-AccessKey (clé constellation)
