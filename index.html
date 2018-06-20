@@ -197,7 +197,7 @@
     
     navigation(1);
 
-    var constellation = $.signalR.createConstellationConsumer(user.constellationUrl, 'ed758fa6751b0efbdaeca51f346fd521c7672eda', 'TestWeb');
+    var constellation = $.signalR.createConstellationConsumer(user.constellationUrl, '', 'TestWeb');
     constellation.connection.stateChanged(function (change) {
         if (change.newState === $.signalR.connectionState.connected) {
             console.log("Je suis connecté");
