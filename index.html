@@ -102,7 +102,7 @@
             <input id="user3" type="text" class="selectable" size="46" />
         </p>
         <p>
-            <button id="saveUser" onclick="userSave();">Save</button>
+            <button id="saveUser" onclick="userSaveForm(); userSaveCookies();">Save</button>
             <button id="zerze" onclick="console.log(user);"> console.log(user)</button>
         </p>
     </div>
@@ -144,9 +144,21 @@
             console.log(user._init[i][0], "=", user._init[i][2]);
             eval("user." + user._init[i][0] + '=user._init[i][2]');
         }
-    }   
+    }
 
+    //on récupère les cookies
+    for (var i = 0; i < user._init.length; i++) {
+        user._init[i][2] = getCookie(user._init[i][0]);
+        userUpdate();
+    }
 
+    function userSaveCookies() {
+        for (var i = 0; i < user._init.length; i++) {
+            setCookie(user._init[i][0], user._init[i][2]);
+        }
+    }
+    
+    
     var Logs = [];
     Logs.Go = false;
     Logs.n = 0;
@@ -186,7 +198,7 @@
 
     }
 
-    function userSave() {
+    function userSaveForm() {
         for (var i = 0; i < user._init.length; i++) {
             if (user._init[i][1]===true) {
                 user._init[i][2] = document.getElementById("user".concat(String(i))).value;
