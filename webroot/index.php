@@ -19,7 +19,7 @@ include("auth.php");
 <div class="form">
 <p>Welcome <?php echo $_SESSION['username']; ?>!</p>
 <p></p>
-<p><a href="dashboard.php">Web Inteface</a></p>
+<p><a href="webinterface.php">Web Inteface</a></p>
 <a href="logout.php">Logout</a>
 </div>
 </body>
