@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyfirstPackage</name>
+    </assembly>
+    <members>
+        <member name="M:MyfirstPackage.PremierProg.BeepBeep(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="frequency">frequece en Hz</param>
+            <param name="duree">durée en ms</param>
+        </member>
+    </members>
+</doc>

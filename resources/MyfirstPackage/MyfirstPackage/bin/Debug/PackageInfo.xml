@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Package xmlns="http://schemas.myconstellation.io/Constellation/1.8/PackageManifest"
+         Name="MyfirstPackage"
+         Version="1.1"
+         Author="Batzoo"
+         URL="http://www.mywebsite.com"
+         Description="Mon 1e package qui demonte sa race"
+         EnableControlHub="false">
+  <Compatibility constellationVersion="1.8" dotNetTargetPlatform="net40">
+    <Platforms>
+      <Platform id="Win32NT" isCompliant="true" />
+      <Platform id="Unix" isCompliant="true" />
+    </Platforms>
+  </Compatibility>
+  <Settings>
+   <Setting name="Intervalle" type="Int32" defaultValue="1000"/>
+  </Settings>
+</Package>

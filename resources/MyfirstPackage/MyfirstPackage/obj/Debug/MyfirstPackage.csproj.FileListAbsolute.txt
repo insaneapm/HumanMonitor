@@ -1,0 +1,16 @@
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\PackageInfo.xml
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\MyfirstPackage.exe.config
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\MyfirstPackage.XML
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\MyfirstPackage.exe
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\MyfirstPackage.pdb
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\Constellation.Common.dll
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\Newtonsoft.Json.dll
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\Constellation.Common.xml
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\bin\Debug\Newtonsoft.Json.xml
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\obj\Debug\MyfirstPackage.csprojAssemblyReference.cache
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\obj\Debug\MyfirstPackage.csproj.CoreCompileInputs.cache
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\obj\Debug\MyfirstPackage.csproj.CopyComplete
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\obj\Debug\MyfirstPackage.exe
+C:\Users\JHDAMAY\Documents\GitHub\HumanMonitor\MyfirstPackage\MyfirstPackage\obj\Debug\MyfirstPackage.pdb
