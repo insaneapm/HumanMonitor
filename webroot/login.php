@@ -18,14 +18,22 @@ if (isset($_POST['username'])){
 	$password = stripslashes($_REQUEST['password']);
 	$password = mysqli_real_escape_string($con,$password);
 	//Checking is user existing in the database or not
+
         $query = "SELECT * FROM `users` WHERE username='$username'
 and password='".md5($password)."'";
 	$result = mysqli_query($con,$query) or die(mysql_error());
 	$rows = mysqli_num_rows($result);
+
         if($rows==1){
+		$ligne = mysqli_fetch_assoc($result);
+		$_SESSION['constellation_access_key'] = $ligne['constellation_access_key'];
+		$_SESSION['constellation_friendly_name'] = $ligne['constellation_friendly_name'];
+		$_SESSION['constellation_url'] = $ligne['constellation_url'];
 	    $_SESSION['username'] = $username;
+		print_r($_SESSION['constellation_access_key']);
+		print_r($_SESSION['constellation_url']);
             // Redirect user to index.php
-	    header("Location: index.php");
+	    header("Location: index.php"); exit;
          }else{
 	echo "<div class='form'>
 <h3>Username/password is incorrect.</h3>

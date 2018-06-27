@@ -1,0 +1,242 @@
+<?php
+
+	session_start();
+	include("auth.php");
+
+
+	
+?>
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.min.js"></script>
+<script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script type="text/javascript" src="./js/external/FileSaver.js"></script>
+<script type="text/javascript" src="./js/external/Cookies.js"></script>
+<script type="text/javascript" src="./js/userConfig.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<head>
+    <style>
+        .shadow {
+            box-shadow: 0px 0px 20px 0px rgb(128, 128, 128);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .selectable {
+            -webkit-touch-callout: inherit;
+            -webkit-user-select: text;
+            -khtml-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the side navigation */
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(165, 165, 165);
+            overflow-x: hidden;
+        }
+
+
+            /* Side navigation links */
+            .sidenav a {
+                color: white;
+                padding: 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                /* Change color on hover */
+                .sidenav a:hover {
+                    box-shadow: -5px 5px 13px 5px rgb(128, 128, 128);
+                    text-shadow: 0px 0px 10px rgb(165, 165, 165);
+                    background-color: white;
+                    color: black;
+                }
+
+        /* Style the content */
+        .content {
+            margin-left: 220px;
+            padding-left: 20px;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <title>Interface Web</title>
+</head>
+
+<body>
+
+    <div class="sidenav shadow" id="navbar">
+        <a id="nav1" class="unselectable" onclick="navigation(1);">SETTINGS</a>
+        <a id="nav2" class="unselectable" onclick="navigation(2);">CONTROL CENTER</a>
+        <a id="nav3" class="unselectable" onclick="navigation(3);">STATISTICS</a>
+    </div>
+
+    <div id="1" class="content">
+        <h1>Settings</h1>
+        <div style="float:right;">0.1</div>
+        <p>
+            AccessKey: 
+            <input id="user1" type="text" class="selectable" size="41" />
+        </p>
+        <p>
+            Constellation URL:
+            <input id="user2" type="text" class="selectable" size="37" />
+        </p>
+        <p>
+            Friendly Name:
+            <input id="user3" type="text" class="selectable" size="46" />
+        </p>
+        <p>
+            <button id="saveUser" onclick="userSaveForm(); userSaveCookies();">Save</button>
+            <button onclick="console.log(user);"> console.log(user)</button>
+        </p>
+    </div>
+
+    <div id="2" class="content">
+        <h1>Control Center</h1>
+        <p>
+            <span id="cpu"></span> % 
+            <button id="id_boutonStartStopLogs" onclick="logsGoChange();"> Start Logs </button>
+            <button id="id_boutonSauvegarder" onclick="logsSauvegarder();"> Save as .txt </button>
+        </p>
+    </div>
+
+    <div id="3" class="content">
+        <h1>Statistics</h1>
+        <p>
+        </p>
+        <div style="width:75%;">
+            <canvas id="canvas"></canvas>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    var Logs = [];
+    Logs.Go = false;
+    Logs.n = 0;
+    Logs.Data = [];
+    Logs.Data.Valeur = [];
+    Logs.Data.Heure = [];
+
+    function logsGoChange() {
+        /* inverse la valeur de Logs.Go et change le nom du bouton correspondant */
+        if (Logs.Go === true) { Logs.Go = false; document.getElementById("id_boutonStartStopLogs").innerHTML = "Start Logs"; }
+        else { Logs.Go = true; document.getElementById("id_boutonStartStopLogs").innerHTML = "Stop Logs" }
+    }
+    
+    function logsSauvegarder() {
+        var TextFileContent = "";
+        for (var i = 0; i < Logs.n; i++) {
+            TextFileContent = TextFileContent.concat(String(Logs.Data.Valeur[i])).concat(';').concat(String(Logs.Data.Heure[i])).concat(';\r\n');
+        }
+        var TextFileName = "LOGS_".concat(new Date()).toUpperCase();
+        TextFileName = TextFileName.slice(0, TextFileName.length - 12);
+        saveAs(new File([TextFileContent], TextFileName.concat(".txt"), { type: "text/plain;charset=utf-8" }));
+    }
+
+
+    function navigation(id) {
+        var elementsNavbar = document.getElementById('navbar').childElementCount;
+        for (var i = 1; i <= elementsNavbar; i++) {
+            if (i != id) {
+                document.getElementById(String(i)).style.display = 'none';
+            }
+            else {
+                document.getElementById(String(id)).style.display = 'block';
+            }
+        }
+
+    }
+
+    navigation(1);
+
+	var constellation = $.signalR.createConstellationConsumer("<?=$_SESSION['constellation_url']?>","<?=$_SESSION['constellation_access_key']?>","<?=$_SESSION['constellation_friendly_name']?>");
+    constellation.connection.stateChanged(function (change) {
+        if (change.newState === $.signalR.connectionState.connected) {
+            console.log("Je suis connecté");
+            constellation.client.registerStateObjectLink("LAPTOP-1R5A4JK5_UI", "HWMonitor", "/intelcpu/0/load/0", "*", function (so) {
+                $("#cpu").text(so.Value.Value);
+                if (Logs.Go) {
+                    console.log("logging..")
+                    Logs.Data.Valeur[Logs.n] = so.Value.Value;
+                    Logs.Data.Heure[Logs.n] = new Date();
+                    Logs.n = Logs.n + 1;
+                    myChart.update();
+                }
+            })
+        }
+    });
+
+    var ctx = document.getElementById("canvas");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Logs.Data.Heure,
+            datasets: [{
+                label: 'Label a changer',
+                data: Logs.Data.Valeur,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    constellation.connection.start();
+
+</script>
+
