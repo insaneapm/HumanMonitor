@@ -19,7 +19,7 @@ for ($i=1; $i<=count($array);$i++){
 	}
 }
 $htmlstr=$htmlstr."</select>";
-$_SESSION['filesel']=intval($filesel);
+$_SESSION['file_selected_logs']=intval($filesel);
 
 echo $htmlstr;
 

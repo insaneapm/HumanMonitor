@@ -6,13 +6,12 @@
 	$query = "SELECT MAX(user_nb_file) FROM `data` WHERE username='$username'";
 	$result = mysqli_query($con,$query) or die(mysql_error());
 	$row = mysqli_fetch_assoc( $result);
-	$_SESSION['nbfile']=intval($row['MAX(user_nb_file)']);
-	$_SESSION['maxfile']=$_SESSION['nbfile'];
+	$_SESSION['last_user_nb_file']=intval($row['MAX(user_nb_file)']);
 
 	$query = "SELECT * FROM `data` WHERE username='$username' ORDER BY user_nb_file DESC LIMIT 1";
 	$result = mysqli_query($con,$query) or die(mysql_error());
 	$row = mysqli_fetch_assoc( $result);
-	$_SESSION['fileID'] = intval($row['fileID']);
+	$_SESSION['last_fileID'] = intval($row['fileID']);
 
 ?>
 
@@ -24,9 +23,8 @@
 <script type="text/javascript" src="https://cdn.myconstellation.io/js/Constellation-1.8.2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 <script type="text/javascript" src="./js/external/FileSaver.js"></script>
-<script type="text/javascript" src="./js/external/Cookies.js"></script>
-<script type="text/javascript" src="./js/userConfig.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script type="text/javascript" src="/js/date.js"></script>
 
 <head>
     <style>
@@ -43,7 +41,7 @@
             -ms-user-select: none;
             user-select: none;
         }
-
+		
         .selectable {
             -webkit-touch-callout: inherit;
             -webkit-user-select: text;
@@ -59,6 +57,12 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+		.canvastest{
+			margin:0 auto 20px auto; 
+			display:block	; 
+			cursor:crosshair
+		}
+
         /* Style the side navigation */
         .sidenav {
             height: 100%;
@@ -70,6 +74,7 @@
             background-color: rgb(170,170,170);
             overflow-x: hidden;
         }
+
 
 
             /* Side navigation links */
@@ -117,22 +122,16 @@
 
     <div id="1" class="content">
         <h1>Settings</h1>
-        <div style="float:right;">xx</div> 
-        <p>
-            AccessKey: 
-            <input id="user1" type="text" class="selectable" size="41" />
-        </p>
-        <p>
-            Constellation URL:
-            <input id="user2" type="text" class="selectable" size="37" />
-        </p>
-        <p>
-            Friendly Name:
-            <input id="user3" type="text" class="selectable" size="46" />
-        </p>
-        <p>
-            <button id="saveUser" onclick="">Save</button>
-        </p>
+		<hr align="left" width="15%" color="black" size="3">  <br />
+        <div style="float:right;">xx</div>
+		
+		<form action="saveusercfg.php" method="get">
+			Constellation Access Key: <input type="password" size="41" name="constellation_access_key" placeholder="<?=$_SESSION['constellation_access_key']?>"><br>
+			Constellation URL: <input type="text" size="30" name="constellation_url" placeholder="<?=$_SESSION['constellation_url']?>"><br>
+			Constellation Friendly Name: <input type="text" name="constellation_friendly_name" placeholder="<?=$_SESSION['constellation_friendly_name']?>"><br>
+			<br /><input type="submit">
+		</form>
+		<br />
 				<?php echo '<pre>';
 		var_dump($_SESSION);
 		echo '</pre>';
@@ -141,16 +140,43 @@
     </div>
 
 	<div id="2" class="content"> </div>
-	<div id="3" class="content"> </div>
+	<div id="3" class="content"> 
+	        <h1>Map View</h1>
+			<hr align="left" width="15%" color="black" size="3"> <br />
+			<canvas class="canvastest" id="mapCanvas" width="600" height="600" > </canvas>
+		<script>
+			var mainCanvas = document.getElementById("mapCanvas");
+			var mainContext = mainCanvas.getContext("2d");
+			var canvasWidth = mainCanvas.width;
+			var canvasHeight = mainCanvas.height;
+
+
+			function drawBase() {    
+				
+				mainContext.fillStyle = "#DDDDDD";
+				mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+				mainContext.fillStyle = "#000000";
+				mainContext.fillRect(100,200,300,200);
+				mainContext.fillStyle = "#DDDDDD";
+				mainContext.fillRect(105,205,290,190);
+				mainContext.fillRect(300,200,50,10);
+				
+			}
+			drawBase();
+
+		</script>
+
+		
+	</div>
+
 
     <div id="4" class="content">
         <h1>Control Center</h1>
-
+		<hr align="left" width="15%" color="black" size="3"> <br />
         <p>
-            <span id="cpu" ></span>
-			<br /> <br /> 
-			Start logging : 
-            <button id="LogsButton" onclick="LogsButton();" class='hiddenbutton' ><img src='/res/play.png' width=20 height=20 /></button>
+            <span id="nbp" ></span>
+				<br />  <br />  
+            <button id="LogsButton" onclick="LogsButton();" class='hiddenbutton' ><img src='/res/play.png' width=125 height=40 /></button>
 		</p>
 		<br />
 		<script>
@@ -182,14 +208,15 @@
 			xmlhttp.send();
 			}
 		</script>
-
-			Add file : <button id="AddFileButton" onclick="addFile();" class='hiddenbutton'><img src='/res/plus.png' width=20 height=20 /></button>
+			<br />
+			<button id="AddFileButton" onclick="addFile();" class='hiddenbutton'><img src='/res/plus.png' width=125 height=40 /></button>
 
     </div>
 
     <div id="5" class="content">	
         <h1>Statistics</h1>
-        <p>Choose a file to get stats from: 
+		<hr align="left" width="15%" color="black" size="3">  <br />
+        <p>Live stats :
         </p>
 
 		<script>
@@ -205,19 +232,22 @@
 		}
 		</script>
 
-		<button onclick="selectFileForStats("10");">azea</button>
-
-		<p id="filestat">
-			<select onchange="selectFileForStats(this.value)">
-			<option value="">Select file:</option>
-			<option value=""></option>
-			</select>
-		</p>
 
 
-        <div style="width:75%;">
+		<canvas id="myChart" width="300" height="100"></canvas>
+
+
+        <div style="width:100%;">
             <canvas id="canvas"></canvas>
         </div>
+
+		        <p>Choose a file to get stats from: 
+        </p>
+				<div id="">
+			<form target="_blank" action="stats.php" method="post">
+			<input type="text" name="fileID" placeholder="fileID" required />
+			<input name="submit" type="submit" value="ok" />
+		</div>
     </div>
 
 </body>
@@ -227,15 +257,18 @@
 	
 <script>
 	isLogging=false;
-	selectFile('<?= $_SESSION['maxfile'] ?>');
+	locallogarray_vals=[];
+	locallogarray_date=[];
+	locallogarray_val =0;
+	selectFile('<?= $_SESSION['last_user_nb_file'] ?>');
 	function LogsButton(){
 		if (isLogging===true){
 			isLogging=false;
-			document.getElementById('LogsButton').innerHTML = "<img src='/res/play.png' width=20 height=20 />";
+			document.getElementById('LogsButton').innerHTML = "<img src='/res/play.png' width=125 height=40 />";
 		}
 		else{
 			isLogging=true;
-			document.getElementById('LogsButton').innerHTML = "<img src='/res/pause.png' width=20 height=20 />";
+			document.getElementById('LogsButton').innerHTML = "<img src='/res/pause.png' width=125 height=40 />";
 
 		}
 	}
@@ -262,28 +295,55 @@
         xmlhttp.send();
 	}
 
+	//cpu
 	var constellation = $.signalR.createConstellationConsumer("<?=$_SESSION['constellation_url']?>","<?=$_SESSION['constellation_access_key']?>","<?=$_SESSION['constellation_friendly_name']?>");
     constellation.connection.stateChanged(function (change) {
         if (change.newState === $.signalR.connectionState.connected) {
             console.log("Je suis connecté");
             constellation.client.registerStateObjectLink("LAPTOP-1R5A4JK5_UI", "HWMonitor", "/intelcpu/0/load/0", "*", function (so) {
-                $("#cpu").text(so.Value.Value);
+                $("#nbp").text(so.Value.Value);
 				if (isLogging===true){
-					saveData(String(so.Value.Value)); 
+					saveData(String(so.Value.Value));
+					locallogarray_vals.push(String(so.Value.Value));
+					date= new Date();
+					if data.toString('');
+					locallogarray_date.push(date.toString('dd-MM-yy - HH:mm:ss'));
+					myChart.update();
+
 				}
 				})
         }
     });
 
+	//humanmonitor
 	/*
-    var ctx = document.getElementById("canvas");
+	var constellation = $.signalR.createConstellationConsumer("<?=$_SESSION['constellation_url']?>","<?=$_SESSION['constellation_access_key']?>","<?=$_SESSION['constellation_friendly_name']?>");
+    constellation.connection.stateChanged(function (change) {
+        if (change.newState === $.signalR.connectionState.connected) {
+            console.log("Je suis connecté");
+            constellation.client.registerStateObjectLink("Developer", "ConstellationPackageConsole1", "Population", "*", function (so) {
+                $("#nbp").text(so.Value);
+				if (isLogging===true){
+					saveData(String(so.Value)); 
+					locallogarray_vals.push(String(locallogarray_val));	
+					date= new Date();
+					datestr="";
+					datestr.concat(String(date.getDay()),"-",String(date.getMonth()),"-",String(date.getYear()).substr(2)," ",String(date.getHours()),":",String(date.getMinutes()),":",String(date.getSeconds()));
+					locallogarray_date.push(datestr);
+					myChart.update();
+				}
+				})
+        }
+    });
+*/ 
+    var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ,
+            labels: locallogarray_date,
             datasets: [{
-                label: 'Label a changer',
-                data: ,
+                label: 'TotalPerson(time)',
+                data: locallogarray_vals,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -300,7 +360,7 @@
                     'rgba(153, 102, 255, 1)',
                     'rgba(255, 159, 64, 1)'
                 ],
-                borderWidth: 1
+                borderWidth:1
             }]
         },
         options: {
@@ -313,7 +373,7 @@
             }
         }
     });
-	*/					
+
     constellation.connection.start();
 
 </script>
